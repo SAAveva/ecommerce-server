@@ -83,7 +83,7 @@ app.patch('/cart/delete', async (req, res) => {
 	const {pid, cart_id} = req.body;
 
 	cart = await cartmodel.findOne({_id: cart_id})
-	cart.products.pull({_id: pid});
+	cart.products.pop();
 	cart.save();
 
 	res.send({status: 'success'})
